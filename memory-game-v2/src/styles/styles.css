@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #2c5dce;
+	color: white;
+	font-family: "Rubik", sans-serif;
+}
+
+/* --- FORMATTING CLASSES --- */
+
+.fl-col-cont {
+	display: flex;
+	flex-direction: column;
+}
+
+.fl-row-cont {
+	display: flex;
+}
+
+.fl-centered {
+	justify-content: center;
+	align-items: center;
+}
+
+/* --- NORMAL STUFF --- */
+
+#overall-wrapper {
+	gap: 20px;
+}
+
+#header {
+	background-color: rgb(47, 103, 233);
+	padding: 20px 0;
+	-webkit-box-shadow: 0px 3px 11px -4px rgba(0, 0, 0, 0.31);
+	box-shadow: 0px 3px 11px -4px rgba(0, 0, 0, 0.31);
+}
+
+#header h3 {
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-top: 5px;
+}
+
+#scoreboard > div {
+	padding: 20px 20px;
+	background-color: #2f67e9;
+	gap: 10px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 3px 11px -4px rgba(0, 0, 0, 0.31);
+	box-shadow: 0px 3px 11px -4px rgba(0, 0, 0, 0.31);
+}
+
+#instructions > p > span {
+	text-decoration: underline;
+}
+
+#scores {
+	padding: 5px 10px;
+	border-radius: inherit;
+	background-color: white;
+	color: rgb(0, 71, 237);
+}
+
+#play-area {
+	padding: 30px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	row-gap: 10px;
+	place-items: center;
+}
+
+.card {
+	border: 0;
+	background-color: rgb(13, 19, 189);
+	width: 20ch;
+	height: 10ch;
+	padding: 10px 20px;
+	-webkit-box-shadow: 0px 3px 11px -4px rgba(0, 0, 0, 0.31);
+	box-shadow: 0px 3px 11px -4px rgba(0, 0, 0, 0.31);
+	border-radius: 5px;
+}
+
+.card > p {
+	font-size: 2rem;
+	font-weight: 600;
+	color: white;
+}
