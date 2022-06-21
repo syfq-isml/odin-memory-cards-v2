@@ -3,12 +3,10 @@ import React, { useState, useEffect } from "react";
 import "./styles/normalize.css";
 import "./styles/styles.css";
 
-import uniqid from "uniqid";
-
 import Header from "./components/Header";
 import Scooreboard from "./components/Scoreboard";
 import PlayArea from "./components/PlayArea";
-import Card from "./components/Card";
+import WinScreen from "./components/WinScreen";
 
 let words2 = [
 	"affix",
@@ -47,11 +45,24 @@ let words = [
 	"abyss",
 ];
 
+const LOCALSTORAGE_KEY_HISCORE = "hiScore";
+
 function App(props) {
 	let [currentScore, setCurrentScore] = useState(0);
 	let [hiScore, setHiScore] = useState(0);
 	let [availWords, setAvailWords] = useState([...words]);
 	let [clickedWords, setClickedWords] = useState([]);
+
+	useEffect(() => {
+		const storedHiScore = JSON.parse(
+			localStorage.getItem(LOCALSTORAGE_KEY_HISCORE)
+		);
+		if (storedHiScore) setHiScore(storedHiScore);
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(LOCALSTORAGE_KEY_HISCORE, JSON.stringify(hiScore));
+	}, [hiScore]);
 
 	const increaseScore = () => {
 		setCurrentScore((prevScore) => {
@@ -75,8 +86,8 @@ function App(props) {
 		}
 	};
 
-	const checkAvail = (e) => {
-		let word = e.target.dataset.word;
+	const checkAvail = (str) => {
+		let word = str;
 		console.log(word);
 		let index = availWords.indexOf(word);
 		console.log(index);
@@ -100,11 +111,15 @@ function App(props) {
 			<Header />
 			<Scooreboard currentScore={currentScore} hiScore={hiScore} />
 			{/* <PlayArea words={wordsCopy} /> */}
-			<PlayArea
-				words={words}
-				increaseScore={increaseScore}
-				checkAvail={checkAvail}
-			/>
+			{currentScore === 10 ? (
+				<WinScreen newGame={resetAll} />
+			) : (
+				<PlayArea
+					words={words}
+					increaseScore={increaseScore}
+					checkAvail={checkAvail}
+				/>
+			)}
 		</div>
 	);
 }

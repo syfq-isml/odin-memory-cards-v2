@@ -70,11 +70,19 @@ body {
 	text-decoration: underline;
 }
 
-#scores {
+#scores,
+#new-game-btn {
 	padding: 5px 10px;
 	border-radius: inherit;
 	background-color: white;
 	color: rgb(0, 71, 237);
+}
+
+#new-game-btn {
+	border: 0;
+	border-radius: 5px;
+	font-weight: 600;
+	margin-top: 10px;
 }
 
 #play-area {
